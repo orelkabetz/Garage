@@ -5,8 +5,13 @@ using System.Text;
 
 namespace Ex03.GarageLogic.Engine_Types
 {
-    class Electric : Engine
+    class ElectricEngine : Engine
     {
+        public ElectricEngine(float i_MaximalBatteryCapacity)
+        {
+            base.MaximalEnergy = i_MaximalBatteryCapacity;
+        }
+
         public float RemainingBatteryTime
         {
             get { return base.CurrentEnergy; }

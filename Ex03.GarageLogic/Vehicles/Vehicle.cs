@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Ex03.GarageLogic.Engine_Types;
 
+
 namespace Ex03.GarageLogic.Vehicles
 {
     public abstract class Vehicle
@@ -14,6 +15,10 @@ namespace Ex03.GarageLogic.Vehicles
         private float m_RemaindEnergyPrecantage;
         private List<Wheel> m_Wheels;
 
+        //public Vehicle(string i_ModelName, string i_LiscensePlate)
+        //{
+
+        //}
         public string ModelName
         { 
             get { return r_ModelName; } 

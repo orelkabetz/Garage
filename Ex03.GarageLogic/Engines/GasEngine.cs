@@ -5,9 +5,15 @@ using System.Text;
 
 namespace Ex03.GarageLogic.Engine_Types
 {
-    class Gas : Engine
+    class GasEngine : Engine
     {
         private eFuelTypes m_FuelType;
+
+        public GasEngine(float i_MaximalFuelCapacity)
+        {
+            base.MaximalEnergy = i_MaximalFuelCapacity;
+        }
+
         public eFuelTypes FuelType
         {
             get { return m_FuelType; }
@@ -18,7 +24,7 @@ namespace Ex03.GarageLogic.Engine_Types
             get { return base.CurrentEnergy; }
             set { base.CurrentEnergy = value; }
         }
-        public float MaximalBatteryTime
+        public float MaximalFuel
         {
             get { return base.MaximalEnergy; }
         }
@@ -34,7 +40,7 @@ namespace Ex03.GarageLogic.Engine_Types
             return String.Format(
 @"Engine Remaining Fuel: {0} Liters
 Engine Maximal Fuel: {1} Liters
-Which is {2}%", MaximalBatteryTime, base.EneregyPrecentage);
+Which is {2}%", MaximalFuel, base.EneregyPrecentage);
         }
         public override void Fill(float i_EnergyToToAdd)
         {

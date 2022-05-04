@@ -2,14 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Ex03.GarageLogic.Engine_Types;
 
 namespace Ex03.GarageLogic.Vehicles
 {
     class Car : Vehicle
     {
         private const byte k_NumOfWheels = 4;
+        private const float k_MaximalWheelPressure = 29f;
+        private const float k_MaximalFuelCapacity = 38f;
+        private const float k_MaximalBatteryCapacity = 3.3f;
+
         private eColor m_Color;
         private eNumOfDoors m_NumOfDoors;
+       
+
+        public Car(VehicleFactory.eEngineType type)
+        {
+            if (type == VehicleFactory.eEngineType.Gas)
+            {
+                base.Engine = new GasEngine();
+            }
+            else if (type == VehicleFactory.eEngineType.Electric)
+            {
+                this.Engine = new ElectricEngine();
+            }
+            for (int i = 0; i < k_NumOfWheels; i++)
+            {
+                Wheel newWheel = new Wheel(k_MaximalWheelPressure);
+                base.Wheels.Add(newWheel);
+            }
+        }
+
         public eColor Color
         {
             get { return m_Color; }

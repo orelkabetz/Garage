@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{981A19E6-B29E-4071-904F-BF1FC62E363A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Ex03.GarageLogic</RootNamespace>
     <AssemblyName>Ex03.GarageLogic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -31,17 +31,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engines\Engine.cs" />
     <Compile Include="Vehicles\Vehicle.cs" />
-    <Compile Include="Engines\Electric.cs" />
-    <Compile Include="Engines\Gas.cs" />
-    <Compile Include="Garage.cs" />
+    <Compile Include="Engines\ElectricEngine.cs" />
+    <Compile Include="Engines\GasEngine.cs" />
+    <Compile Include="Garage\Garage.cs" />
     <Compile Include="ValueOutOfRanfeException.cs" />
     <Compile Include="Vehicles\Car.cs" />
     <Compile Include="Vehicles\Motorcycle.cs" />
     <Compile Include="Vehicles\Truck.cs" />
-    <Compile Include="VheicleFactory.cs" />
+    <Compile Include="Garage\OwnerDetails.cs" />
+    <Compile Include="VehicleFactory.cs" />
     <Compile Include="Wheel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,7 +8,7 @@ namespace Ex03.GarageLogic.Engine_Types
     public abstract class Engine
     {
         private float m_CurrentEnergy;
-        private readonly float r_MaximalEnergy;
+        private float r_MaximalEnergy;
         public float CurrentEnergy
         { 
             get { return m_CurrentEnergy; } 
@@ -24,6 +24,7 @@ namespace Ex03.GarageLogic.Engine_Types
         public float MaximalEnergy
         {
             get { return r_MaximalEnergy; }
+            set { r_MaximalEnergy = value; }
         }
         public float EneregyPrecentage
         {

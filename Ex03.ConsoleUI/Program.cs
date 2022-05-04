@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Ex03.ConsoleUI
 {
-    internal class Program
+    public class Program
     {
+        public static void Main()
+        {
+            Controller.Run();
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    class ValueOutOfRanfeException: Exception
+    public class ValueOutOfRanfeException: Exception
     {
     }
 }
