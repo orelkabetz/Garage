@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ex03.GarageLogic.Engine_Types
+namespace Ex03.GarageLogic.Engines
 {
-    class GasEngine : Engine
+    public class GasEngine : Engine
     {
         private eFuelTypes m_FuelType;
 
-        public GasEngine(float i_MaximalFuelCapacity)
+        public GasEngine(eFuelTypes i_fuelType, float i_MaximalFuelCapacity)
         {
             base.MaximalEnergy = i_MaximalFuelCapacity;
+            m_FuelType = i_fuelType;
         }
 
         public eFuelTypes FuelType

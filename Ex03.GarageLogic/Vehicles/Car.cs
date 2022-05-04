@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ex03.GarageLogic.Engine_Types;
+using Ex03.GarageLogic.Engines;
 
 namespace Ex03.GarageLogic.Vehicles
 {
-    class Car : Vehicle
+    public class Car : Vehicle
     {
         private const byte k_NumOfWheels = 4;
         private const float k_MaximalWheelPressure = 29f;
@@ -21,7 +21,7 @@ namespace Ex03.GarageLogic.Vehicles
         {
             if (type == VehicleFactory.eEngineType.Gas)
             {
-                base.Engine = new GasEngine(k_MaximalFuelCapacity);
+                base.Engine = new GasEngine(GasEngine.eFuelTypes.Octan95, k_MaximalFuelCapacity);
             }
             else if (type == VehicleFactory.eEngineType.Electric)
             {

@@ -7,18 +7,19 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
-        private readonly string r_ManufacturerName;
+        private  string m_ManufacturerName;
         private float m_CurrentAirPressure;
-        private readonly float r_MaximalAirPressure;
+        private float m_MaximalAirPressure;
 
         public Wheel(float i_MaximalAirPressure)
         { 
             m_CurrentAirPressure = i_MaximalAirPressure;
-            r_MaximalAirPressure = i_MaximalAirPressure;
+            m_MaximalAirPressure = i_MaximalAirPressure;
         }
         public string ManufacturerName
         {
-            get { return r_ManufacturerName; }
+            get { return m_ManufacturerName; }
+            set { m_ManufacturerName = value; }
         }
         public float CurrentAirPressure
         {
@@ -27,12 +28,12 @@ namespace Ex03.GarageLogic
         }
         public float MaximalAirPressure
         {
-            get { return r_MaximalAirPressure; }
+            get { return m_MaximalAirPressure; }
         }
 
         public void inflate(float i_Air)
         {
-            if (i_Air < 0 || m_CurrentAirPressure + i_Air > r_MaximalAirPressure)
+            if (i_Air < 0 || m_CurrentAirPressure + i_Air > m_MaximalAirPressure)
             {
                 throw new ValueOutOfRanfeException();
             }
@@ -48,7 +49,7 @@ namespace Ex03.GarageLogic
 @"Wheels Manufacturer: {0}
 Wheels Current Pressure: {1}
 Wheels Maximal Pressure: {2}",
-r_ManufacturerName, m_CurrentAirPressure, r_MaximalAirPressure);
+m_ManufacturerName, m_CurrentAirPressure, m_MaximalAirPressure);
         }
     }
 }

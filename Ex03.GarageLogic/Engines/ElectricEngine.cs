@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ex03.GarageLogic.Engine_Types
+namespace Ex03.GarageLogic.Engines
 {
-    class ElectricEngine : Engine
+    public class ElectricEngine : Engine
     {
         public ElectricEngine(float i_MaximalBatteryCapacity)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Vehicles;
+using Ex03.GarageLogic.Engines;
 using Ex03.GarageLogic.Garage;
 using Ex03;
 
@@ -95,67 +96,88 @@ namespace Ex03.ConsoleUI
             VehicleFactory.eEngineType engineType;
             GetVehcileType(out vehcileType, out engineType);
             Vehicle vehicle = VehicleFactory.CreateNewVehicle(vehcileType, engineType);
-            DetailsRequest(vehcileType, engineType);
+            DetailsRequest(vehicle, vehcileType, engineType);
 
         }
 
-        private static void DetailsRequest(VehicleFactory.eVehicleType i_VehcileType, VehicleFactory.eEngineType i_EngineType)
+        private static void DetailsRequest(Vehicle vehicle, VehicleFactory.eVehicleType i_VehcileType, VehicleFactory.eEngineType i_EngineType)
         {
             Messages.LicensePlateNumber();
-            Console.ReadLine();
+            vehicle.LiscensePlate = Console.ReadLine();
             Messages.ModelName();
-            Console.ReadLine();
+            vehicle.ModelName = Console.ReadLine();
             if (i_EngineType == VehicleFactory.eEngineType.Gas)
             {
-                Messages.GasType();
-                Console.ReadLine();
                 Messages.LeftGas();
-                Console.ReadLine();
-
+                float leftGas;
+                float.TryParse(Console.ReadLine(), out leftGas);
+                vehicle.Engine.CurrentEnergy = leftGas;
             }
             else // Electric
             {
                 Messages.LeftBattery();
-                Console.ReadLine();
+                float LeftBattery;
+                float.TryParse(Console.ReadLine(), out LeftBattery);
+                vehicle.Engine.CurrentEnergy = LeftBattery;
 
             }
 
             if (i_VehcileType == VehicleFactory.eVehicleType.Motorcycle)
             {
                 Messages.MotorcycleLicenseType();
-                Console.ReadLine();
-
+                Motorcycle.eLicenseType licenseType;
+                Enum.TryParse(Console.ReadLine(), out licenseType);
+                (vehicle as Motorcycle).LicenseType = licenseType;
 
                 Messages.EngineVolume();
-                Console.ReadLine();
+                int maximalEnergy;
+                Int32.TryParse(Console.ReadLine(), out maximalEnergy);
+                vehicle.Engine.MaximalEnergy = maximalEnergy;
 
             }
             else if (i_VehcileType == VehicleFactory.eVehicleType.Car)
             {
                 Messages.CarColor();
-                Console.ReadLine();
+                Car.eColor color;
+                Enum.TryParse(Console.ReadLine(), out color);
+                (vehicle as Car).Color = color;
 
                 Messages.CarNumOfDoors();
-                Console.ReadLine();
-
+                Car.eNumOfDoors doors;
+                Enum.TryParse(Console.ReadLine(), out doors);
+                (vehicle as Car).NumOfDoors = doors;
             }
             else // Truck
             {
                 Messages.TruckRefrigirated();
-                Console.ReadLine();
+                string refrigirated = Console.ReadLine();
+                if (refrigirated == "1")
+                {
+                    (vehicle as Truck).IsContainingRefrigiratedContent = true;
+                }
+                else // "2"
+                {
+                    (vehicle as Truck).IsContainingRefrigiratedContent = false;
+                }
 
 
                 Messages.TruckCargoVolume();
-                Console.ReadLine();
+                float cargoVolume;
+                float.TryParse(Console.ReadLine(), out cargoVolume);
+                (vehicle as Truck).CargoVolume = cargoVolume;
 
             }
 
             Messages.WheelManufacturer();
-            Console.ReadLine();
+            string manufacturerName = Console.ReadLine();
+            foreach (Wheel wheel in vehicle.Wheels)
+            {
+                wheel.ManufacturerName = manufacturerName;
+            }
 
 
-            Messages.CurrentWheelPressure();
-            Console.ReadLine();
+            //Messages.CurrentWheelPressure();
+            //Console.ReadLine();  // צריך לבדוק על כל אחד מהגלגלים, לשנות את ההודעות לפי סוג הרכב וכו'
 
 
         }

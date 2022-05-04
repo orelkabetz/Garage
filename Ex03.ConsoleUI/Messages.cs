@@ -118,42 +118,40 @@ namespace Ex03.ConsoleUI
         public static void LicensePlateNumber()
         {
             Console.Clear();
-            string licensePlateNumber = "Please enter the license plate number:";
+            string licensePlateNumber = string.Format(
+@" 
+        Please enter the license plate number:"
+);
             Console.WriteLine(licensePlateNumber);
         }
 
         internal static void ModelName()
         {
             Console.Clear();
-            string modelName = "Please enter the model name:";
-            Console.WriteLine(modelName);
-        }
-
-        internal static void GasType()
-        {
-            Console.Clear();
-            string type = string.Format(
+            string modelName = string.Format(
 @" 
-         Please Choose the type of the fuel:
-            (1) Soler
-            (2) Octan95
-            (3) Octan96
-            (4) Octan98
-");
-            Console.WriteLine(type);
+        Please enter the model name:"
+);
+            Console.WriteLine(modelName);
         }
 
         internal static void LeftGas()
         {
             Console.Clear();
-            string leftGas = "Please enter how much gas left:";
+            string leftGas = string.Format(
+@" 
+        Please enter how much gas left:"
+);
             Console.WriteLine(leftGas);
         }
 
         internal static void LeftBattery()
         {
             Console.Clear();
-            string leftBattery = "Please enter how much battery left:";
+            string leftBattery = string.Format(
+@" 
+        Please enter how much battery left:"
+);
             Console.WriteLine(leftBattery);
         }
 
@@ -174,7 +172,10 @@ namespace Ex03.ConsoleUI
         internal static void EngineVolume()
         {
             Console.Clear();
-            string engineVolume = "Please enter how much battery left:";
+            string engineVolume = string.Format(
+@" 
+        Please enter how much battery left:"
+);
             Console.WriteLine(engineVolume);
         }
 
@@ -221,21 +222,30 @@ namespace Ex03.ConsoleUI
         internal static void TruckCargoVolume()
         {
             Console.Clear();
-            string cargoVolume = "Please enter the truck cargo volume:";
+            string cargoVolume = string.Format(
+@" 
+        Please enter the truck cargo volume:"
+);
             Console.WriteLine(cargoVolume);
         }
 
         internal static void WheelManufacturer()
         {
             Console.Clear();
-            string wheelManufacturerName = "Please enter the wheel manufacturer name:";
+            string wheelManufacturerName = string.Format(
+@" 
+        Please enter the wheel manufacturer name:"
+);
             Console.WriteLine(wheelManufacturerName);
         }
 
         internal static void CurrentWheelPressure()
         {
             Console.Clear();
-            string wheelPressure = "Please enter the current wheel pressure:";
+            string wheelPressure = string.Format(
+@" 
+        Please enter the current wheel pressure:"
+);
             Console.WriteLine(wheelPressure);
         }
     }
