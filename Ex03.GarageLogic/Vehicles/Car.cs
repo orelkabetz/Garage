@@ -21,11 +21,11 @@ namespace Ex03.GarageLogic.Vehicles
         {
             if (type == VehicleFactory.eEngineType.Gas)
             {
-                base.Engine = new GasEngine();
+                base.Engine = new GasEngine(k_MaximalFuelCapacity);
             }
             else if (type == VehicleFactory.eEngineType.Electric)
             {
-                this.Engine = new ElectricEngine();
+                this.Engine = new ElectricEngine(k_MaximalBatteryCapacity);
             }
             for (int i = 0; i < k_NumOfWheels; i++)
             {
@@ -46,7 +46,7 @@ namespace Ex03.GarageLogic.Vehicles
         }
         public enum eColor
         {
-            Red,
+            Red = 1,
             White,
             Green,
             Blue,

@@ -45,7 +45,7 @@ namespace Ex03.GarageLogic.Vehicles
         }
         public enum eLicenseType
         {
-            A,
+            A = 1,
             A1,
             B1,
             BB,

@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Vehicles;
+using Ex03.GarageLogic.Garage;
 using Ex03;
 
 namespace Ex03.ConsoleUI
 {
     public static class Controller
     {
+        private static Garage m_Garage;
         public static void Run()
         {
             eUserOpstions userChoice;
+            m_Garage = new Garage();
             Messages.Hello();
             do
             {
@@ -92,6 +95,68 @@ namespace Ex03.ConsoleUI
             VehicleFactory.eEngineType engineType;
             GetVehcileType(out vehcileType, out engineType);
             Vehicle vehicle = VehicleFactory.CreateNewVehicle(vehcileType, engineType);
+            DetailsRequest(vehcileType, engineType);
+
+        }
+
+        private static void DetailsRequest(VehicleFactory.eVehicleType i_VehcileType, VehicleFactory.eEngineType i_EngineType)
+        {
+            Messages.LicensePlateNumber();
+            Console.ReadLine();
+            Messages.ModelName();
+            Console.ReadLine();
+            if (i_EngineType == VehicleFactory.eEngineType.Gas)
+            {
+                Messages.GasType();
+                Console.ReadLine();
+                Messages.LeftGas();
+                Console.ReadLine();
+
+            }
+            else // Electric
+            {
+                Messages.LeftBattery();
+                Console.ReadLine();
+
+            }
+
+            if (i_VehcileType == VehicleFactory.eVehicleType.Motorcycle)
+            {
+                Messages.MotorcycleLicenseType();
+                Console.ReadLine();
+
+
+                Messages.EngineVolume();
+                Console.ReadLine();
+
+            }
+            else if (i_VehcileType == VehicleFactory.eVehicleType.Car)
+            {
+                Messages.CarColor();
+                Console.ReadLine();
+
+                Messages.CarNumOfDoors();
+                Console.ReadLine();
+
+            }
+            else // Truck
+            {
+                Messages.TruckRefrigirated();
+                Console.ReadLine();
+
+
+                Messages.TruckCargoVolume();
+                Console.ReadLine();
+
+            }
+
+            Messages.WheelManufacturer();
+            Console.ReadLine();
+
+
+            Messages.CurrentWheelPressure();
+            Console.ReadLine();
+
 
         }
 
@@ -101,9 +166,16 @@ namespace Ex03.ConsoleUI
             Messages.diaplayVehicleTypes();
             Int32.TryParse(Console.ReadLine(), out vehcileTypeInt); // Exception or if/else
             vehcileType = (VehicleFactory.eVehicleType)vehcileTypeInt;
-            Messages.diaplayEngineTypes();
-            Int32.TryParse(Console.ReadLine(), out engineTypeInt); // Exception or if/else
-            engineType = (VehicleFactory.eEngineType)engineTypeInt;
+            if (vehcileType != VehicleFactory.eVehicleType.Truck)
+            {
+                Messages.diaplayEngineTypes();
+                Int32.TryParse(Console.ReadLine(), out engineTypeInt); // Exception or if/else
+                engineType = (VehicleFactory.eEngineType)engineTypeInt;
+            }
+            else // Truck
+            {
+                engineType = VehicleFactory.eEngineType.Gas;
+            }
         }
 
         public enum eUserOpstions

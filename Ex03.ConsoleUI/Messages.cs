@@ -114,5 +114,129 @@ namespace Ex03.ConsoleUI
 ");
             Console.WriteLine(type);
         }
+
+        public static void LicensePlateNumber()
+        {
+            Console.Clear();
+            string licensePlateNumber = "Please enter the license plate number:";
+            Console.WriteLine(licensePlateNumber);
+        }
+
+        internal static void ModelName()
+        {
+            Console.Clear();
+            string modelName = "Please enter the model name:";
+            Console.WriteLine(modelName);
+        }
+
+        internal static void GasType()
+        {
+            Console.Clear();
+            string type = string.Format(
+@" 
+         Please Choose the type of the fuel:
+            (1) Soler
+            (2) Octan95
+            (3) Octan96
+            (4) Octan98
+");
+            Console.WriteLine(type);
+        }
+
+        internal static void LeftGas()
+        {
+            Console.Clear();
+            string leftGas = "Please enter how much gas left:";
+            Console.WriteLine(leftGas);
+        }
+
+        internal static void LeftBattery()
+        {
+            Console.Clear();
+            string leftBattery = "Please enter how much battery left:";
+            Console.WriteLine(leftBattery);
+        }
+
+        internal static void MotorcycleLicenseType()
+        {
+            Console.Clear();
+            string type = string.Format(
+@" 
+         Please Choose the type of the license:
+            (1) A
+            (2) A1
+            (3) B1
+            (4) BB
+");
+            Console.WriteLine(type);
+        }
+
+        internal static void EngineVolume()
+        {
+            Console.Clear();
+            string engineVolume = "Please enter how much battery left:";
+            Console.WriteLine(engineVolume);
+        }
+
+        internal static void CarColor()
+        {
+            Console.Clear();
+            string color = string.Format(
+@" 
+         Please Choose the color of the car:
+            (1) Red
+            (2) White
+            (3) Green
+            (4) Blue
+");
+            Console.WriteLine(color);
+        }
+
+        internal static void CarNumOfDoors()
+        {
+            Console.Clear();
+            string doorNumber = string.Format(
+@" 
+         Please Choose the number of doors in the car:
+            (2) Two
+            (3) Three
+            (3) Four
+            (5) Five
+");
+            Console.WriteLine(doorNumber);
+        }
+
+        internal static void TruckRefrigirated()
+        {
+            Console.Clear();
+            string refrigirated = string.Format(
+@" 
+         Does the truck refrigirated?
+            (1) Yes
+            (2) No
+");
+            Console.WriteLine(refrigirated);
+        }
+
+        internal static void TruckCargoVolume()
+        {
+            Console.Clear();
+            string cargoVolume = "Please enter the truck cargo volume:";
+            Console.WriteLine(cargoVolume);
+        }
+
+        internal static void WheelManufacturer()
+        {
+            Console.Clear();
+            string wheelManufacturerName = "Please enter the wheel manufacturer name:";
+            Console.WriteLine(wheelManufacturerName);
+        }
+
+        internal static void CurrentWheelPressure()
+        {
+            Console.Clear();
+            string wheelPressure = "Please enter the current wheel pressure:";
+            Console.WriteLine(wheelPressure);
+        }
     }
 }

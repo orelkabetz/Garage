@@ -23,12 +23,12 @@ namespace Ex03.GarageLogic.Vehicles
         {
             get { return r_CargoVolume; }
         }
-        public Truck(string i_WheelManufacturer)
+        public Truck()
         {
-            base.Engine = new GasEngine();
+            base.Engine = new GasEngine(k_MaximalFuelCapacity);
             for (int i = 0; i < k_NumOfWheels; i++)
             {
-                Wheel newWheel = new Wheel(i_WheelManufacturer, k_MaximalWheelPressure);
+                Wheel newWheel = new Wheel(k_MaximalWheelPressure);
                 base.Wheels.Add(newWheel);
             }
         }

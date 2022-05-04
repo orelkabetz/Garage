@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic.Engine_Types
         }
         public enum eFuelTypes
         {
-            Soler,
+            Soler = 1,
             Octan95,
             Octan96,
             Octan98,
