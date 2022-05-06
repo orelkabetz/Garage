@@ -39,7 +39,7 @@ RemainingBatteryTime ,MaximalBatteryTime, base.EneregyPrecentage);
         {
             if (i_BatteryTimeToAdd < 0 || i_BatteryTimeToAdd + RemainingBatteryTime > MaximalBatteryTime)
             {
-                throw new ValueOutOfRanfeException();
+                throw new ValueOutOfRangeException(0, MaximalBatteryTime, "Electric Engine");
             }
             RemainingBatteryTime += i_BatteryTimeToAdd;
         }

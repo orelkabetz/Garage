@@ -33,5 +33,16 @@ namespace Ex03.GarageLogic.Vehicles
                 base.Wheels.Add(newWheel);
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder stringToPrint = new StringBuilder(base.ToString());
+            stringToPrint.AppendFormat(
+@"
+Truck Details:
+Containing Refrigirated Content: {0}
+Cargo volume: {1}", IsContainingRefrigiratedContent.ToString(), CargoVolume);
+            return stringToPrint.ToString();
+        }
     }
 }

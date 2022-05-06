@@ -40,7 +40,7 @@
     <Compile Include="Engines\ElectricEngine.cs" />
     <Compile Include="Engines\GasEngine.cs" />
     <Compile Include="Garage\Garage.cs" />
-    <Compile Include="ValueOutOfRanfeException.cs" />
+    <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="Vehicles\Car.cs" />
     <Compile Include="Vehicles\Motorcycle.cs" />
     <Compile Include="Vehicles\Truck.cs" />

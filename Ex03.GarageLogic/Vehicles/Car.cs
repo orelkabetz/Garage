@@ -58,5 +58,15 @@ namespace Ex03.GarageLogic.Vehicles
             Four,
             Five,
         }
+        public override string ToString()
+        {
+            StringBuilder stringToPrint = new StringBuilder(base.ToString());
+            stringToPrint.AppendFormat(
+@"
+Car Details:
+Color: {0}
+Nunber of doors: {1}", Color, NumOfDoors);
+            return stringToPrint.ToString();
+        }
     }
 }

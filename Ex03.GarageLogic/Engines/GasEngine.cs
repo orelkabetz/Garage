@@ -41,7 +41,7 @@ namespace Ex03.GarageLogic.Engines
             return String.Format(
 @"Engine Remaining Fuel: {0} Liters
 Engine Maximal Fuel: {1} Liters
-Which is {2}%", MaximalFuel, base.EneregyPrecentage);
+Which is {2}%",RemainingFuel, MaximalFuel, base.EneregyPrecentage);
         }
         public override void Fill(float i_EnergyToToAdd)
         {
@@ -51,7 +51,7 @@ Which is {2}%", MaximalFuel, base.EneregyPrecentage);
         {
             if (i_FuelToToAdd < 0 || i_FuelToToAdd + RemainingFuel > MaximalEnergy)
             {
-                throw new ValueOutOfRanfeException();
+                throw new ValueOutOfRangeException(0, MaximalEnergy, "Gas Engine");
             }
             RemainingFuel += i_FuelToToAdd;
         }

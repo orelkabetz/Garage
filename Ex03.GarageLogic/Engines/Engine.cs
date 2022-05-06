@@ -8,27 +8,27 @@ namespace Ex03.GarageLogic.Engines
     public abstract class Engine
     {
         private float m_CurrentEnergy;
-        private float r_MaximalEnergy;
+        private float m_MaximalEnergy;
         public float CurrentEnergy
         { 
             get { return m_CurrentEnergy; } 
             set
             { 
-                if (value < 0 | value > r_MaximalEnergy)
+                if (value < 0 | value > m_MaximalEnergy)
                 {
-                    throw new ValueOutOfRanfeException();
+                    throw new ValueOutOfRangeException(0, m_MaximalEnergy, "Engine");
                 }
                 m_CurrentEnergy = value; 
             }
         }
         public float MaximalEnergy
         {
-            get { return r_MaximalEnergy; }
-            set { r_MaximalEnergy = value; }
+            get { return m_MaximalEnergy; }
+            set { m_MaximalEnergy = value; }
         }
         public float EneregyPrecentage
         {
-            get { return (m_CurrentEnergy / r_MaximalEnergy) * 100; }
+            get { return (m_CurrentEnergy / m_MaximalEnergy) * 100; }
         }
         public abstract void Fill(float i_EnergyToAdd);
     }

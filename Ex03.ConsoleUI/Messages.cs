@@ -29,7 +29,7 @@ namespace Ex03.ConsoleUI
 @" 
           What Would You Like To Do?
         (1) Add a vehicle to the garage
-        (2) Display all the cars in the garage
+        (2) Display vehicles
         (3) Change a vehicle's state
         (4) Inflate a vheicle's wheels
         (5) Fuel a vehicle
@@ -64,6 +64,7 @@ namespace Ex03.ConsoleUI
             Please try again:
 ");
             Console.WriteLine(invalidCohice);
+            PressAnyKey();
         }
 
         public static void FormatException(FormatException exception)
@@ -82,7 +83,7 @@ namespace Ex03.ConsoleUI
         Console.WriteLine(exceptionString);
         }
 
-        public static void ValueOutOfRanfeException(ValueOutOfRanfeException exception)
+        public static void ValueOutOfRangeException(ValueOutOfRangeException exception)
         {
             Console.Clear();
             string exceptionString = string.Format(
@@ -115,6 +116,67 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(type);
         }
 
+        public static void DisplayLicensePlatesMenu()
+        {
+            Console.Clear();
+            string licensePlateMenu = string.Format(
+@" 
+         Please choose the list of vehicles you would like to see:
+            (1) Vehicles in Fixing
+            (2) Completed Fixing Vehicles
+            (3) Paid To Garage Vehicles
+            (4) All The Vehicles In The Garage
+");
+            Console.WriteLine(licensePlateMenu);
+        }
+
+        public static void ChargeAmount()
+        {
+            Console.Clear();
+            string chargeAmount = string.Format(
+@" 
+        Please enter the amount of battery time you would like to add:"
+);
+            Console.WriteLine(chargeAmount);
+        }
+
+        public static void FuelType()
+        {
+            Console.Clear();
+            string fuelType = string.Format(
+@" 
+         Please choose the fuel type you would like to add:
+            (1) Soler
+            (2) Octan95
+            (3) Octan96
+            (4) Octan98
+");
+            Console.WriteLine(fuelType);
+        }
+
+        public static void SetVehicleState()
+        {
+            Console.Clear();
+            string setVehicleState = string.Format(
+@" 
+         Please choose the state you would like to change the vehicle to:
+            (1) Fixing
+            (2) Completed
+            (3) Paid
+");
+            Console.WriteLine(setVehicleState);
+        }
+
+        public static void FuelAmount()
+        {
+            Console.Clear();
+            string fuelAmount = string.Format(
+@" 
+        Please enter the amount of fuel you would like to add:"
+);
+            Console.WriteLine(fuelAmount);
+        }
+
         public static void LicensePlateNumber()
         {
             Console.Clear();
@@ -125,7 +187,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(licensePlateNumber);
         }
 
-        internal static void ModelName()
+        public static void ModelName()
         {
             Console.Clear();
             string modelName = string.Format(
@@ -135,7 +197,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(modelName);
         }
 
-        internal static void LeftGas()
+        public static void LeftGas()
         {
             Console.Clear();
             string leftGas = string.Format(
@@ -145,7 +207,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(leftGas);
         }
 
-        internal static void LeftBattery()
+        public static void LeftBattery()
         {
             Console.Clear();
             string leftBattery = string.Format(
@@ -155,7 +217,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(leftBattery);
         }
 
-        internal static void MotorcycleLicenseType()
+        public static void MotorcycleLicenseType()
         {
             Console.Clear();
             string type = string.Format(
@@ -169,17 +231,17 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(type);
         }
 
-        internal static void EngineVolume()
+        public static void EngineVolume()
         {
             Console.Clear();
             string engineVolume = string.Format(
 @" 
-        Please enter how much battery left:"
+        Please enter the engine volume:"
 );
             Console.WriteLine(engineVolume);
         }
 
-        internal static void CarColor()
+        public static void CarColor()
         {
             Console.Clear();
             string color = string.Format(
@@ -193,7 +255,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(color);
         }
 
-        internal static void CarNumOfDoors()
+        public static void CarNumOfDoors()
         {
             Console.Clear();
             string doorNumber = string.Format(
@@ -207,7 +269,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(doorNumber);
         }
 
-        internal static void TruckRefrigirated()
+        public static void TruckRefrigirated()
         {
             Console.Clear();
             string refrigirated = string.Format(
@@ -219,7 +281,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(refrigirated);
         }
 
-        internal static void TruckCargoVolume()
+        public static void TruckCargoVolume()
         {
             Console.Clear();
             string cargoVolume = string.Format(
@@ -229,7 +291,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(cargoVolume);
         }
 
-        internal static void WheelManufacturer()
+        public static void WheelManufacturer()
         {
             Console.Clear();
             string wheelManufacturerName = string.Format(
@@ -239,7 +301,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(wheelManufacturerName);
         }
 
-        internal static void CurrentWheelPressure()
+        public static void CurrentWheelPressure()
         {
             Console.Clear();
             string wheelPressure = string.Format(
@@ -247,6 +309,44 @@ namespace Ex03.ConsoleUI
         Please enter the current wheel pressure:"
 );
             Console.WriteLine(wheelPressure);
+        }
+
+        public static void OwnerName()
+        {
+            Console.Clear();
+            string ownerName = string.Format(
+@" 
+        Please enter the name of the owner:"
+);
+            Console.WriteLine(ownerName);
+        }
+
+        public static void OwnerPhoneNumber()
+        {
+            Console.Clear();
+            string ownerPhoneNumber = string.Format(
+@" 
+        Please enter the phone number of the owner:"
+);
+            Console.WriteLine(ownerPhoneNumber);
+        }
+
+        public static void SuccsefullVehicleAdding()
+        {
+            Console.Clear();
+            string ownerPhoneNumber = string.Format(
+@" 
+        Vehicle added succsefully"
+);
+            Console.WriteLine(ownerPhoneNumber);
+            System.Threading.Thread.Sleep(2000);
+
+        }
+
+        public static void PressAnyKey()
+        {
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic.Vehicles
         private const float k_MaximalBatteryCapacity = 2.5f;
 
         private eLicenseType m_LicenseType;
-        private readonly int r_EngineCapacity;
+        private int m_EngineCapacity;
 
         public Motorcycle(VehicleFactory.eEngineType type)
         {
@@ -31,12 +31,22 @@ namespace Ex03.GarageLogic.Vehicles
                 Wheel newWheel = new Wheel(k_MaximalWheelPressure);
                 base.Wheels.Add(newWheel);
             }
-
         }
 
         public int EngineCapacity
         { 
-            get { return r_EngineCapacity; } 
+            get { return m_EngineCapacity; }
+            set { m_EngineCapacity = value; }
+        }
+        public override string ToString()
+        {
+            StringBuilder stringToPrint = new StringBuilder(base.ToString());
+            stringToPrint.AppendFormat(
+@"
+Motorcycle Details:
+License type: {0}
+Engine capacity: {1}", LicenseType, EngineCapacity);
+            return stringToPrint.ToString();
         }
         public eLicenseType LicenseType
         {

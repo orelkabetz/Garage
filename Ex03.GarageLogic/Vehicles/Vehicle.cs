@@ -9,8 +9,8 @@ namespace Ex03.GarageLogic.Vehicles
 {
     public abstract class Vehicle
     {
-        private string r_ModelName;
-        private string r_LiscensePlate;
+        private string m_LiscensePlate;
+        private string m_ModelName;
         private Engine m_Engine;
         private float m_RemaindEnergyPrecantage;
         private List<Wheel> m_Wheels = new List<Wheel>();
@@ -19,15 +19,17 @@ namespace Ex03.GarageLogic.Vehicles
         //{
 
         //}
+
+        //public override bool equals()
         public string ModelName
         { 
-            get { return r_ModelName; } 
-            set { r_ModelName = value; }
+            get { return m_ModelName; }
+            set { m_ModelName = value; }
         }
         public string LiscensePlate
         {
-            get { return r_LiscensePlate; }
-            set { r_LiscensePlate = value; }
+            get { return m_LiscensePlate; }
+            set { m_LiscensePlate = value; }
         }
         public Engine Engine
         {
@@ -44,5 +46,20 @@ namespace Ex03.GarageLogic.Vehicles
             get { return m_Wheels; }
         }
 
+        public bool EqualsLicensePlates(string i_licensePlate)
+        { 
+            return this.LiscensePlate == i_licensePlate;
+        }
+        public override string ToString()
+        {
+            string combinedString = string.Join(" ", (object[])m_Wheels.ToArray());
+
+
+            return String.Format(
+@"Liscense Plate Number: {0}
+Vehicle Model Name: {1}
+{2} 
+{3} ", m_LiscensePlate, m_ModelName, m_Engine, combinedString);
+        }
     }
 }
