@@ -17,37 +17,37 @@ namespace Ex03.GarageLogic
             Electric,
         }
 
-        public static Vehicle CreateNewVehicle(eVehicleType vehcileType, eEngineType engineType)
+        public static Vehicle CreateNewVehicle(eVehicleType i_VehcileType, eEngineType i_EngineType)
         {
             Vehicle vehicle = null;
-            if (vehcileType == eVehicleType.Motorcycle)
+            if (i_VehcileType == eVehicleType.Motorcycle)
             {
-                if (engineType == eEngineType.Gas)
+                if (i_EngineType == eEngineType.Gas)
                 {
                     //Motorcycle creation gas
                     vehicle = new Motorcycle(eEngineType.Gas);
                 }
-                else if (engineType == eEngineType.Electric)
+                else if (i_EngineType == eEngineType.Electric)
                 {
                     //Motorcycle creation elec
                     vehicle = new Motorcycle(eEngineType.Electric);
                 }
             }
-            else if (vehcileType == eVehicleType.Car)
+            else if (i_VehcileType == eVehicleType.Car)
             {
-                if (engineType == eEngineType.Gas)
+                if (i_EngineType == eEngineType.Gas)
                 {
                     // Car creation gas
                     vehicle = new Car(eEngineType.Gas);
 
                 }
-                else if (engineType == eEngineType.Electric)
+                else if (i_EngineType == eEngineType.Electric)
                 {
                     //Car creation elec
                     vehicle = new Car(eEngineType.Electric);
                 }
             }
-            else if (vehcileType == eVehicleType.Truck)
+            else if (i_VehcileType == eVehicleType.Truck)
             {
                 // Truck creation gas
                 vehicle = new Truck();

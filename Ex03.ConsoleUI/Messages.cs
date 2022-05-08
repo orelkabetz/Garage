@@ -349,5 +349,11 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
         }
+
+        public static void VehicleExists()
+        {
+            Console.WriteLine("The vehicle is already in garge , we send it to fixing");
+            PressAnyKey();
+        }
     }
 }

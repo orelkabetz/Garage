@@ -13,13 +13,13 @@ namespace Ex03.GarageLogic.Vehicles
         private eLicenseType m_LicenseType;
         private int m_EngineCapacity;
 
-        public Motorcycle(VehicleFactory.eEngineType type)
+        public Motorcycle(VehicleFactory.eEngineType i_Type)
         {
-            if (type == VehicleFactory.eEngineType.Gas)
+            if (i_Type == VehicleFactory.eEngineType.Gas)
             {
                 base.Engine = new GasEngine(GasEngine.eFuelTypes.Octan98, k_MaximalFuelCapacity);
             }
-            else if(type == VehicleFactory.eEngineType.Electric)
+            else if(i_Type == VehicleFactory.eEngineType.Electric)
             {
                 this.Engine = new ElectricEngine(k_MaximalBatteryCapacity);
             }

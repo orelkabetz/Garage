@@ -6,10 +6,10 @@ namespace Ex03.GarageLogic.Engines
     {
         private eFuelTypes m_FuelType;
 
-        public GasEngine(eFuelTypes i_fuelType, float i_MaximalFuelCapacity)
+        public GasEngine(eFuelTypes i_FuelType, float i_MaximalFuelCapacity)
         {
             base.MaximalEnergy = i_MaximalFuelCapacity;
-            m_FuelType = i_fuelType;
+            m_FuelType = i_FuelType;
         }
 
         public eFuelTypes FuelType

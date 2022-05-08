@@ -42,9 +42,9 @@ namespace Ex03.GarageLogic.Vehicles
             get { return m_Wheels; }
         }
 
-        public bool EqualsLicensePlates(string i_licensePlate)
+        public bool EqualsLicensePlates(string i_LicensePlate)
         { 
-            return this.LiscensePlate == i_licensePlate;
+            return this.LiscensePlate == i_LicensePlate;
         }
 
         public override string ToString()

@@ -13,13 +13,13 @@ namespace Ex03.GarageLogic.Vehicles
         private eColor m_Color;
         private eNumOfDoors m_NumOfDoors; 
 
-        public Car(VehicleFactory.eEngineType type)
+        public Car(VehicleFactory.eEngineType i_Type)
         {
-            if (type == VehicleFactory.eEngineType.Gas)
+            if (i_Type == VehicleFactory.eEngineType.Gas)
             {
                 base.Engine = new GasEngine(GasEngine.eFuelTypes.Octan95, k_MaximalFuelCapacity);
             }
-            else if (type == VehicleFactory.eEngineType.Electric)
+            else if (i_Type == VehicleFactory.eEngineType.Electric)
             {
                 this.Engine = new ElectricEngine(k_MaximalBatteryCapacity);
             }

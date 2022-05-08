@@ -307,7 +307,7 @@ namespace Ex03.ConsoleUI
             if (checkIfLicensePlateAlreadyExists(licensePlate))
             {
                 m_Garage.GarageVehicles[licensePlate].VehicleState = OwnerDetails.eVehicleState.Fixing;
-                throw new FormatException("The vehicle is already in garge , we send it to fixing");
+                Messages.VehicleExists();
             }
             else // Doesn't exisxts and we want to create new vehicle
             {
