@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using Ex03.GarageLogic.Engines;
 
 namespace Ex03.GarageLogic.Vehicles
@@ -38,6 +35,7 @@ namespace Ex03.GarageLogic.Vehicles
             get { return m_EngineCapacity; }
             set { m_EngineCapacity = value; }
         }
+
         public override string ToString()
         {
             StringBuilder stringToPrint = new StringBuilder(base.ToString());
@@ -48,11 +46,13 @@ License type: {0}
 Engine capacity: {1}", LicenseType, EngineCapacity);
             return stringToPrint.ToString();
         }
+
         public eLicenseType LicenseType
         {
             get { return m_LicenseType; }
             set { m_LicenseType = value; }
         }
+
         public enum eLicenseType
         {
             A = 1,

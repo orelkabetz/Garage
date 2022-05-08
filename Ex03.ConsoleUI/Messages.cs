@@ -1,8 +1,5 @@
 ﻿using Ex03.GarageLogic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Ex03.ConsoleUI
 {
@@ -14,7 +11,7 @@ namespace Ex03.ConsoleUI
             string hello = string.Format(
 @" 
          Hello and Welcome to 
-            Elkabetz@Sharf 
+            Elkabetz & Sharf 
                 Garage
                     
 ");
@@ -95,7 +92,7 @@ namespace Ex03.ConsoleUI
             System.Threading.Thread.Sleep(3000);
         }
 
-        public static void diaplayVehicleTypes()
+        public static void DisplayVehicleTypes()
         {
             Console.Clear();
             string type = string.Format(
@@ -108,7 +105,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(type);
         }
 
-        public static void diaplayEngineTypes()
+        public static void DisplayEngineTypes()
         {
             Console.Clear();
             string type = string.Format(

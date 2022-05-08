@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Ex03.GarageLogic.Engines;
 
 
@@ -15,32 +13,30 @@ namespace Ex03.GarageLogic.Vehicles
         private float m_RemaindEnergyPrecantage;
         private List<Wheel> m_Wheels = new List<Wheel>();
 
-        //public Vehicle(string i_ModelName, string i_LiscensePlate)
-        //{
-
-        //}
-
-        //public override bool equals()
         public string ModelName
         { 
             get { return m_ModelName; }
             set { m_ModelName = value; }
         }
+
         public string LiscensePlate
         {
             get { return m_LiscensePlate; }
             set { m_LiscensePlate = value; }
         }
+
         public Engine Engine
         {
             get { return m_Engine; }
             set { m_Engine = value; }
         }
+
         public float RemaindEnergyPrecantage
         {
             get { return m_RemaindEnergyPrecantage; }
             set { m_RemaindEnergyPrecantage = value; }
         }
+
         public List<Wheel> Wheels
         {
             get { return m_Wheels; }
@@ -50,6 +46,7 @@ namespace Ex03.GarageLogic.Vehicles
         { 
             return this.LiscensePlate == i_licensePlate;
         }
+
         public override string ToString()
         {
             string combinedString = string.Join(" ", (object[])m_Wheels.ToArray());

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Ex03.GarageLogic.Engines
 {
@@ -17,10 +14,12 @@ namespace Ex03.GarageLogic.Engines
             get { return base.CurrentEnergy; }
             set { base.CurrentEnergy = value; }
         }
+
         public float MaximalBatteryTime
         {
             get { return base.MaximalEnergy; }
         }
+
         public override string ToString()
         {
             return String.Format(

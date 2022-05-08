@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Ex03.GarageLogic;
 using Ex03.GarageLogic.Vehicles;
 using Ex03.GarageLogic.Engines;
 using Ex03.GarageLogic.Garage;
-using Ex03;
 
 namespace Ex03.ConsoleUI
 {
     public static class Controller
     {
         private static Garage m_Garage;
+
         public static void Run()
         {
             eUserOpstions userChoice;
@@ -92,7 +90,7 @@ namespace Ex03.ConsoleUI
                 Messages.ArgumentException(exception);
 
             }
-            catch (ValueOutOfRangeException exception) // לטפל
+            catch (ValueOutOfRangeException exception) 
             {
                 Messages.ValueOutOfRangeException(exception);
             }
@@ -157,8 +155,6 @@ namespace Ex03.ConsoleUI
 
         }
 
-    
-
         private static void fuelVehicle()
         {
                 Messages.LicensePlateNumber();
@@ -199,8 +195,6 @@ namespace Ex03.ConsoleUI
 
         }
 
-    
-
         private static void inflateToMax()
         {
             Messages.LicensePlateNumber();
@@ -240,22 +234,22 @@ namespace Ex03.ConsoleUI
             switch (e_UserStateChoice)
             {
                 case OwnerDetails.eVehicleState.Fixing:
-                    DisplayVehiclesInFixing();
+                    displayVehiclesInFixing();
                     break;
                 case OwnerDetails.eVehicleState.Completed:
-                    DisplayCompletedVehicles();
+                    displayCompletedVehicles();
                     break;
                 case OwnerDetails.eVehicleState.Paid:
-                    DisplayPaidVehicles();
+                    displayPaidVehicles();
                     break;
                 default:
-                    DisplayAllVehicles();
+                    displayAllVehicles();
                     break;
             }
             Messages.PressAnyKey();
         }
 
-        private static void DisplayAllVehicles()
+        private static void displayAllVehicles()
         {
             Console.Clear();
 
@@ -265,7 +259,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static void DisplayPaidVehicles()
+        private static void displayPaidVehicles()
         {
             Console.Clear();
 
@@ -278,7 +272,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static void DisplayCompletedVehicles()
+        private static void displayCompletedVehicles()
         {
             Console.Clear();
 
@@ -291,7 +285,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static void DisplayVehiclesInFixing()
+        private static void displayVehiclesInFixing()
         {
             Console.Clear();
             foreach (KeyValuePair<string, OwnerDetails> vehicle in m_Garage.GarageVehicles)
@@ -319,10 +313,10 @@ namespace Ex03.ConsoleUI
             {
                 VehicleFactory.eVehicleType vehcileType;
                 VehicleFactory.eEngineType engineType;
-                GetVehcileType(out vehcileType, out engineType);
+                getVehcileType(out vehcileType, out engineType);
                 vehicle = VehicleFactory.CreateNewVehicle(vehcileType, engineType);
                 vehicle.LiscensePlate = licensePlate;
-                DetailsRequest(vehicle, vehcileType, engineType, out owner);
+                detailsRequest(vehicle, vehcileType, engineType, out owner);
                 m_Garage.GarageVehicles.Add(vehicle.LiscensePlate, owner);
                 Messages.SuccsefullVehicleAdding();
                 Messages.PressAnyKey();
@@ -338,12 +332,12 @@ namespace Ex03.ConsoleUI
             return false;
         }
 
-        private static void DetailsRequest(Vehicle io_Vehicle, VehicleFactory.eVehicleType i_VehcileType, VehicleFactory.eEngineType i_EngineType, out OwnerDetails io_Owner)
+        private static void detailsRequest(Vehicle io_Vehicle, VehicleFactory.eVehicleType i_VehcileType, VehicleFactory.eEngineType i_EngineType, out OwnerDetails io_Owner)
         {
             Messages.ModelName();
             io_Vehicle.ModelName = Console.ReadLine();
 
-            io_Owner = OwnerDetailsRequest();
+            io_Owner = ownerDetailsRequest();
 
             if (i_EngineType == VehicleFactory.eEngineType.Gas)
             {
@@ -464,7 +458,7 @@ namespace Ex03.ConsoleUI
             io_Owner.Vehicle = io_Vehicle;
         }
 
-        private static OwnerDetails OwnerDetailsRequest()
+        private static OwnerDetails ownerDetailsRequest()
         {
             
             Messages.OwnerName();
@@ -487,10 +481,10 @@ namespace Ex03.ConsoleUI
             return new OwnerDetails(ownerName, ownerPhoneNumber);
         }
 
-        private static void GetVehcileType(out VehicleFactory.eVehicleType vehcileType, out VehicleFactory.eEngineType engineType)
+        private static void getVehcileType(out VehicleFactory.eVehicleType vehcileType, out VehicleFactory.eEngineType engineType)
         {
             uint vehcileTypeInt, engineTypeInt;
-            Messages.diaplayVehicleTypes();
+            Messages.DisplayVehicleTypes();
             if(!UInt32.TryParse(Console.ReadLine(), out vehcileTypeInt))
             {
                 throw new FormatException("Have to enter right number for vehicle");
@@ -498,7 +492,7 @@ namespace Ex03.ConsoleUI
             vehcileType = (VehicleFactory.eVehicleType)vehcileTypeInt;
             if (vehcileType != VehicleFactory.eVehicleType.Truck)
             {
-                Messages.diaplayEngineTypes();
+                Messages.DisplayEngineTypes();
                 if(!UInt32.TryParse(Console.ReadLine(), out engineTypeInt)){
                     throw new FormatException("Have to enter right number for engine type");
                 } // Exception or if/else
@@ -521,6 +515,5 @@ namespace Ex03.ConsoleUI
             DisplayDetails,
             Esc,
         }
-
     }
 }

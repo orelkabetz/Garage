@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using Ex03.GarageLogic.Engines;
 
 namespace Ex03.GarageLogic.Vehicles
@@ -14,8 +11,7 @@ namespace Ex03.GarageLogic.Vehicles
         private const float k_MaximalBatteryCapacity = 3.3f;
 
         private eColor m_Color;
-        private eNumOfDoors m_NumOfDoors;
-       
+        private eNumOfDoors m_NumOfDoors; 
 
         public Car(VehicleFactory.eEngineType type)
         {
@@ -39,11 +35,13 @@ namespace Ex03.GarageLogic.Vehicles
             get { return m_Color; }
             set { m_Color = value; }
         }
+
         public eNumOfDoors NumOfDoors
         {
             get { return m_NumOfDoors; }
             set { m_NumOfDoors = value; }
         }
+
         public enum eColor
         {
             Red = 1,
@@ -51,6 +49,7 @@ namespace Ex03.GarageLogic.Vehicles
             Green,
             Blue,
         }
+
         public enum eNumOfDoors
         {
             Two = 2,
@@ -58,6 +57,7 @@ namespace Ex03.GarageLogic.Vehicles
             Four,
             Five,
         }
+
         public override string ToString()
         {
             StringBuilder stringToPrint = new StringBuilder(base.ToString());

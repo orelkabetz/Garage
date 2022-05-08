@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Ex03.GarageLogic.Garage
 {
@@ -9,6 +6,7 @@ namespace Ex03.GarageLogic.Garage
     {
         private Dictionary<string, OwnerDetails> m_GarageVehicles; // String is for the License Plate number
         private List<OwnerDetails> m_Owners;
+
         public Garage()
         {
             m_GarageVehicles = new Dictionary<string, OwnerDetails>();
