@@ -71,24 +71,28 @@ namespace Ex03.ConsoleUI
         {
             Console.Clear();
             string exceptionString = string.Format(
-@"{0}, {1}:", exception.Source, exception.Message );
+            @"{0}, {1}:", exception.Source, exception.Message );
             Console.WriteLine(exceptionString);
+            System.Threading.Thread.Sleep(3000);
         }
 
         public static void ArgumentException(ArgumentException exception)
         { 
             Console.Clear();
             string exceptionString = string.Format(
-@"{0}, {1}:", exception.ParamName, exception.Message);
-        Console.WriteLine(exceptionString);
+            @"{0}, {1}:", exception.ParamName, exception.Message);
+            Console.WriteLine(exceptionString);
+            System.Threading.Thread.Sleep(3000);
+
         }
 
         public static void ValueOutOfRangeException(ValueOutOfRangeException exception)
         {
             Console.Clear();
             string exceptionString = string.Format(
-@"{0}, {1}:", exception.Source, exception.Message);
+            @"{0}, {1}:", exception.Source, exception.Message);
             Console.WriteLine(exceptionString);
+            System.Threading.Thread.Sleep(3000);
         }
 
         public static void diaplayVehicleTypes()

@@ -18,20 +18,32 @@ namespace Ex03.ConsoleUI
             eUserOpstions userChoice;
             m_Garage = new Garage();
             Messages.Hello();
-            do
+            try
             {
-                Console.Clear();
-                Messages.DisplayMenu();
-                userChoice = getUserChoice();
-                operateUserCohice(ref userChoice);
-            } while (userChoice != eUserOpstions.Esc);
-            Messages.ByeBye();
+                do
+                {
+                    Console.Clear();
+                    Messages.DisplayMenu();
+
+                    userChoice = getUserChoice();
+                    operateUserCohice(ref userChoice);
+                }
+                while (userChoice != eUserOpstions.Esc);
+                Messages.ByeBye();
+            }
+            catch (FormatException exception)
+            {
+                Messages.FormatException(exception);
+            }
         }
 
         private static eUserOpstions getUserChoice()
         {
-            int userChoice;
-            Int32.TryParse(Console.ReadLine(), out userChoice);
+            uint userChoice;
+            if (!UInt32.TryParse(Console.ReadLine(), out userChoice))
+            {
+                throw new FormatException("Invalid menu option choice");
+            }
             return (eUserOpstions)userChoice;
         }
 
@@ -70,6 +82,7 @@ namespace Ex03.ConsoleUI
                         break;
                 }
             }
+         
             catch (FormatException exception)
             {
                 Messages.FormatException(exception);
@@ -88,9 +101,17 @@ namespace Ex03.ConsoleUI
                 if (userChoice != eUserOpstions.Esc)
                 {
                     Messages.DisplayMenu();
-                    userChoice = getUserChoice();
+                    try
+                    {
+                        userChoice = getUserChoice();
+                    }
+                    catch (FormatException exception)
+                    {
+                        Messages.FormatException(exception);
+                    }
                     operateUserCohice(ref userChoice);
                 }
+                Messages.PressAnyKey();
             }
         }
 
@@ -109,40 +130,45 @@ namespace Ex03.ConsoleUI
 
         private static void chargeVehicle()
         {
-            try
-            {
+           
                 Messages.LicensePlateNumber();
                 string licensePlate = Console.ReadLine();
                 Messages.ChargeAmount();
                 string stringChargeAmount = Console.ReadLine();
                 float chargeAmount;
-                float.TryParse(stringChargeAmount, out chargeAmount);
+                if(!float.TryParse(stringChargeAmount, out chargeAmount))
+                {
+                    throw new FormatException("You have to insert Real Integer for amount of chrging");
+
+                }
                 if (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine is GasEngine)
                 {
                     throw new ArgumentException("The vehicle you asked to fuel has gas engine");
                 }
-                if ((chargeAmount > 0) && (chargeAmount <= (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine as ElectricEngine).MaximalBatteryTime))
-                {
-                    m_Garage.GarageVehicles[licensePlate].Vehicle.Engine.Fill(chargeAmount);
-                }
-            }
-            catch (Exception) // Handle later
+            if ((chargeAmount > 0) && (chargeAmount <= (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine as ElectricEngine).MaximalBatteryTime))
             {
-
+                m_Garage.GarageVehicles[licensePlate].Vehicle.Engine.Fill(chargeAmount);
+            }
+            else
+            {
+                throw new ValueOutOfRangeException(0,(m_Garage.GarageVehicles[licensePlate].Vehicle.Engine as ElectricEngine).MaximalBatteryTime, "Electric Engine");
             }
             Messages.PressAnyKey();
+
         }
+
+    
 
         private static void fuelVehicle()
         {
-            try
-            {
                 Messages.LicensePlateNumber();
                 string licensePlate = Console.ReadLine();
                 Messages.FuelType();
                 string stringFuelType = Console.ReadLine();
                 GasEngine.eFuelTypes eFuelType;
-                Enum.TryParse(stringFuelType, out eFuelType);
+                if (!Enum.TryParse(stringFuelType, out eFuelType)) {
+                    throw new FormatException("No matching fuel type , pls enter number according the menu");
+                }
                 if (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine is GasEngine)
                 {
                     if (eFuelType != (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine as GasEngine).FuelType)
@@ -158,18 +184,22 @@ namespace Ex03.ConsoleUI
                 Messages.FuelAmount();
                 string stringFuelAmount = Console.ReadLine();
                 float fuelAmount;
-                float.TryParse(stringFuelAmount, out fuelAmount);
+                if(!float.TryParse(stringFuelAmount, out fuelAmount))
+                {
+                    throw new FormatException("No matching fuel amount , pls enter real integer");
+
+                };
                 if ((fuelAmount > 0) && (fuelAmount <= (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine as GasEngine).MaximalFuel))
                 {
                     m_Garage.GarageVehicles[licensePlate].Vehicle.Engine.Fill(fuelAmount);
+                }else{
+                throw new ValueOutOfRangeException(0, (m_Garage.GarageVehicles[licensePlate].Vehicle.Engine as GasEngine).MaximalFuel,"Gas Engine");
                 }
-            }
-            catch (Exception) // Handle later
-            {
-
-            }
             Messages.PressAnyKey();
+
         }
+
+    
 
         private static void inflateToMax()
         {
@@ -189,7 +219,10 @@ namespace Ex03.ConsoleUI
             Messages.SetVehicleState();
             string stringVehicleState = Console.ReadLine();
             OwnerDetails.eVehicleState eVehicleState;
-            Enum.TryParse(stringVehicleState, out eVehicleState);
+            if(!Enum.TryParse(stringVehicleState, out eVehicleState))
+            {
+                throw new FormatException("Invalid state , pls eneter right number according to menu");
+            }
             m_Garage.GarageVehicles[licensePlate].VehicleState = eVehicleState;
             Messages.PressAnyKey();
         }
@@ -199,7 +232,10 @@ namespace Ex03.ConsoleUI
             Messages.DisplayLicensePlatesMenu();
             string userChoice = Console.ReadLine();
             OwnerDetails.eVehicleState e_UserStateChoice;
-            Enum.TryParse(userChoice, out e_UserStateChoice);
+            if(!Enum.TryParse(userChoice, out e_UserStateChoice))
+            {
+                throw new FormatException("invalid input of user choice, please insert right number according to menu");
+            }
             
             switch (e_UserStateChoice)
             {
@@ -277,6 +313,7 @@ namespace Ex03.ConsoleUI
             if (checkIfLicensePlateAlreadyExists(licensePlate))
             {
                 m_Garage.GarageVehicles[licensePlate].VehicleState = OwnerDetails.eVehicleState.Fixing;
+                throw new FormatException("The vehicle is already in garge , we send it to fixing");
             }
             else // Doesn't exisxts and we want to create new vehicle
             {
@@ -312,14 +349,21 @@ namespace Ex03.ConsoleUI
             {
                 Messages.LeftGas();
                 float leftGas;
-                float.TryParse(Console.ReadLine(), out leftGas);
+                if(!float.TryParse(Console.ReadLine(), out leftGas))
+                {
+                    throw new FormatException("invalid input of left gas , please insert real Integer");
+                }
                 io_Vehicle.Engine.CurrentEnergy = leftGas;
             }
             else // Electric
             {
                 Messages.LeftBattery();
                 float LeftBattery;
-                float.TryParse(Console.ReadLine(), out LeftBattery);
+                if(!float.TryParse(Console.ReadLine(), out LeftBattery))
+                {
+                    throw new FormatException("invalid input of left Battery , please insert real Integer");
+
+                }
                 io_Vehicle.Engine.CurrentEnergy = LeftBattery;
 
             }
@@ -328,25 +372,37 @@ namespace Ex03.ConsoleUI
             {
                 Messages.MotorcycleLicenseType();
                 Motorcycle.eLicenseType licenseType;
-                Enum.TryParse(Console.ReadLine(), out licenseType);
+                if(!Enum.TryParse(Console.ReadLine(), out licenseType))
+                {
+                    throw new FormatException("invalid input of license Type , please insert right number according to menu");
+
+                }
                 (io_Vehicle as Motorcycle).LicenseType = licenseType;
 
                 Messages.EngineVolume();
-                int engineVolume;
-                Int32.TryParse(Console.ReadLine(), out engineVolume);
-                (io_Vehicle as Motorcycle).EngineCapacity = engineVolume;
+                uint engineVolume;
+                if(UInt32.TryParse(Console.ReadLine(), out engineVolume))
+                {
+                    throw new FormatException("invalid input of engine volume , please enter Integer");
+                }
+                (io_Vehicle as Motorcycle).EngineCapacity = (int)engineVolume;
 
             }
             else if (i_VehcileType == VehicleFactory.eVehicleType.Car)
             {
                 Messages.CarColor();
                 Car.eColor color;
-                Enum.TryParse(Console.ReadLine(), out color);
+                if (!Enum.TryParse(Console.ReadLine(), out color)){
+                    throw new FormatException("invalid input of color Type , please insert right number according to menu");
+                }
                 (io_Vehicle as Car).Color = color;
 
                 Messages.CarNumOfDoors();
                 Car.eNumOfDoors doors;
-                Enum.TryParse(Console.ReadLine(), out doors);
+                if(!Enum.TryParse(Console.ReadLine(), out doors))
+                {
+                    throw new FormatException("invalid input of doors amount , please insert right number according to menu");
+                }
                 (io_Vehicle as Car).NumOfDoors = doors;
             }
             else // Truck
@@ -357,15 +413,27 @@ namespace Ex03.ConsoleUI
                 {
                     (io_Vehicle as Truck).IsContainingRefrigiratedContent = true;
                 }
-                else // "2"
+                else if(refrigirated == "2")
                 {
                     (io_Vehicle as Truck).IsContainingRefrigiratedContent = false;
+                }
+                else
+                {
+                    throw new FormatException("invalid input of refrigirated content, please insert right number according to menu");
                 }
 
 
                 Messages.TruckCargoVolume();
                 float cargoVolume;
-                float.TryParse(Console.ReadLine(), out cargoVolume);
+                if(!float.TryParse(Console.ReadLine(), out cargoVolume))
+                {
+                    throw new FormatException("invalid input of cargo Volume , please insert positive real number");
+                }
+                if(cargoVolume < 0)
+                {
+                    throw new FormatException("invalid input of cargo Volume , please insert positive real number");
+
+                }
                 (io_Vehicle as Truck).CargoVolume = cargoVolume;
 
             }
@@ -380,7 +448,14 @@ namespace Ex03.ConsoleUI
 
             Messages.CurrentWheelPressure();
             float wheelPressure;
-            float.TryParse(Console.ReadLine(), out wheelPressure);
+            if(!float.TryParse(Console.ReadLine(), out wheelPressure))
+            {
+                throw new FormatException("invalid input of wheel pressure , please insert positive real number");
+            }
+            if(wheelPressure < 0)
+            {
+                throw new FormatException("invalid input of wheel pressure , please insert positive real number");
+            }
             foreach (Wheel wheel in io_Vehicle.Wheels)
             {
                 wheel.CurrentAirPressure = wheelPressure;
@@ -414,14 +489,19 @@ namespace Ex03.ConsoleUI
 
         private static void GetVehcileType(out VehicleFactory.eVehicleType vehcileType, out VehicleFactory.eEngineType engineType)
         {
-            int vehcileTypeInt, engineTypeInt;
+            uint vehcileTypeInt, engineTypeInt;
             Messages.diaplayVehicleTypes();
-            Int32.TryParse(Console.ReadLine(), out vehcileTypeInt); // Exception or if/else
+            if(!UInt32.TryParse(Console.ReadLine(), out vehcileTypeInt))
+            {
+                throw new FormatException("Have to enter right number for vehicle");
+            } // Exception or if/else
             vehcileType = (VehicleFactory.eVehicleType)vehcileTypeInt;
             if (vehcileType != VehicleFactory.eVehicleType.Truck)
             {
                 Messages.diaplayEngineTypes();
-                Int32.TryParse(Console.ReadLine(), out engineTypeInt); // Exception or if/else
+                if(!UInt32.TryParse(Console.ReadLine(), out engineTypeInt)){
+                    throw new FormatException("Have to enter right number for engine type");
+                } // Exception or if/else
                 engineType = (VehicleFactory.eEngineType)engineTypeInt;
             }
             else // Truck

@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
 
         public ValueOutOfRangeException(float i_StartRange, float i_EndRange, string i_Name)
             : base(string.Format(
-                @"The value isn't inside range (exceeded from radge:
+                @"The value isn't inside range (exceeded from radge):
                 start range = {0} ,
                 end range = {1}", i_StartRange, i_EndRange))
         {
